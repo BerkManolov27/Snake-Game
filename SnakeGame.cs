@@ -66,14 +66,26 @@ namespace SnakeGame
                     stringBuilder.AppendLine($"{verticalBorderPiece}{emptyHorizontalSlide}{verticalBorderPiece}");
                 }
 
-                stringBuilder.AppendLine($"{boardersOffset}{horizontalSlide}");
+                string emptyHorizontalSideBottom = new string(' ', boardWidth - boardersOffset);
+                stringBuilder.AppendLine($"{horizontalBorderPiece}{emptyHorizontalSideBottom}{horizontalBorderPiece}");
 
                 string borders = stringBuilder.ToString().TrimEnd();
 
                 Console.WriteLine(borders);
+            }
 
+            void DrawScorePanel()
+            {
+                StringBuilder stringBuilder = new StringBuilder();
 
+                 int reversedSnakeSpeed = snake.GetReversedSpeed();
 
+                stringBuilder.AppendLine($"Score: {playerPoints}      Snake speed: {reversedSnakeSpeed}");
+
+                string scorePanel = stringBuilder.ToString().TrimEnd();
+
+                Console.SetCursorPosition(left: 0 , top: boardHeight - scorePanelTextPosition);
+                Console.WriteLine(scorePanel);
             }
         }
     }

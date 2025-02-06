@@ -52,14 +52,16 @@ namespace SnakeGame
         public bool IsOutOfBorders(int boardHeight, int boardWidth, int bordersOffset) =>
             this.NewHeadPosition.Row < 1 ||
             this.NewHeadPosition.Row > boardHeight - bordersOffset ||
-            this.NewHeadPosition.Col < 1 ||
-            this.NewHeadPosition.Col > boardWidth - bordersOffset;
+            this.NewHeadPosition.Row < 1 ||
+            this.NewHeadPosition.Row > boardWidth - bordersOffset ||
+            this.NewHeadPosition.Col < 1 || this.NewHeadPosition.Col >= boardHeight - bordersOffset;
 
         public bool IsBitten() =>
-                this.Elements.Any(x => x.Col == this.NewHeadPosition.Col
-                && x.Row == this.NewHeadPosition.Row);
+                this.Elements.Any
+            (x => x.Col == this.NewHeadPosition.Col && x.Row == this.NewHeadPosition.Row);
 
-        public int GetReversedSpeed() => MaximumSnakeSpeed - this.Speed;
+        public int GetReversedSpeed() 
+            => MaximumSnakeSpeed - this.Speed;
 
 
 
