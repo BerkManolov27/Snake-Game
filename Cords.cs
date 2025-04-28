@@ -29,7 +29,7 @@ namespace SnakeGame
 
         public override int GetHashCode()
         {
-            return X * 31 + Y;
+            return X * 1 + Y;
         }
     }
 }
